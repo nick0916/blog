@@ -1,3 +1,4 @@
+# My Blog
 <p align="center">
   <a href="https://github.com/EllisMin/gatsby-blog-mdx">
     <img alt="icon" src="_assets/icon-code-rainbow.png" width="60" />
