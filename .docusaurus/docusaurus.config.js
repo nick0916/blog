@@ -1,13 +1,13 @@
 export default {
-  "title": "My Site",
-  "tagline": "Dinosaurs are cool",
-  "url": "https://your-docusaurus-test-site.com",
+  "title": "Kiwee Blog",
+  "tagline": "",
+  "url": "https://hey-kiwee.dev/",
   "baseUrl": "/",
   "onBrokenLinks": "throw",
   "onBrokenMarkdownLinks": "warn",
   "favicon": "img/favicon.ico",
-  "organizationName": "facebook",
-  "projectName": "docusaurus",
+  "organizationName": "nick0916",
+  "projectName": "blog",
   "presets": [
     [
       "@docusaurus/preset-classic",
