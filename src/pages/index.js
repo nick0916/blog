@@ -1,80 +1,40 @@
-import React, { useState, useEffect } from "react"
-import { graphql } from "gatsby"
-import Layout from "../components/Layout"
-import SEO from "../components/SEO"
-import MainCard from "../components/MainCard"
+import React from 'react';
+import clsx from 'clsx';
+import Layout from '@theme/Layout';
+import Link from '@docusaurus/Link';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import styles from './index.module.css';
+import HomepageFeatures from '../components/HomepageFeatures';
 
-const loadsPer = 15
-
-const IndexPage = ({ data }) => {
-  const [loaded, setLoaded] = useState(undefined)
-  const posts = data.allMdx.edges
-
-  useEffect(() => {
-    const curLoad = sessionStorage.getItem("curLoad") || loadsPer
-    setLoaded(parseInt(curLoad))
-  }, [])
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll)
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll)
-    }
-  })
-
-  const handleScroll = () => {
-    const lastPostLoaded = document.querySelector(
-      "div.posts-list > a:last-child"
-    )
-    const lastPostLoadedOffset =
-      lastPostLoaded.offsetTop + lastPostLoaded.clientHeight
-    const pageOffset = window.pageYOffset + window.innerHeight
-
-    if (pageOffset > lastPostLoadedOffset) {
-      // Stops loading
-      if (posts.length > loaded)
-        setLoaded(prev => {
-          sessionStorage.setItem("curLoad", prev + loadsPer)
-          return prev + loadsPer
-        })
-    }
-  }
-
+function HomepageHeader() {
+  const {siteConfig} = useDocusaurusContext();
   return (
-    <Layout>
-      <SEO title="Home" />
-      <MainCard posts={posts} loads={loaded} />
-    </Layout>
-  )
+    <header className={clsx('hero hero--primary', styles.heroBanner)}>
+      <div className="container">
+        <h1 className="hero__title">{siteConfig.title}</h1>
+        <p className="hero__subtitle">{siteConfig.tagline}</p>
+        <div className={styles.buttons}>
+          <Link
+            className="button button--secondary button--lg"
+            to="/docs/intro">
+            Docusaurus Tutorial - 5min ⏱️
+          </Link>
+        </div>
+      </div>
+    </header>
+  );
 }
 
-export const pageQuery = graphql`
-  query BlogIndexQuery {
-    allMdx(
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { draft: { ne: true } } }
-    ) {
-      edges {
-        node {
-          id
-          body
-          excerpt(pruneLength: 180, truncate: true)
-          timeToRead
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "MM/DD/YYYY")
-            title
-            tags
-            excerpt
-            draft
-          }
-        }
-      }
-    }
-  }
-`
-
-export default IndexPage
+export default function Home() {
+  const {siteConfig} = useDocusaurusContext();
+  return (
+    <Layout
+      title={`Hello from ${siteConfig.title}`}
+      description="Description will go into a meta tag in <head />">
+      <HomepageHeader />
+      <main>
+        <HomepageFeatures />
+      </main>
+    </Layout>
+  );
+}

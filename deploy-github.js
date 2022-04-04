@@ -1,12 +1,17 @@
 const ghpages = require('gh-pages');
 
 ghpages.publish(
-  'public',
+  'build',
   {
-    branch: 'gatsby-page',
+    branch: 'docusaurus-page',
     repo: 'https://github.com/nick0916/blog.git',
   },
-  () => {
-    console.log('Deploy Complete!');
+  (error) => {
+      if (error){
+          console.log(error)
+      }
+      else {
+          console.log('Deploy Complete!');
+      }
   }
 );
