@@ -2,6 +2,10 @@
   "title": "Recent posts",
   "items": [
     {
+      "title": "First Commit",
+      "permalink": "/blog/First Commit"
+    },
+    {
       "title": "Welcome",
       "permalink": "/blog/welcome"
     },

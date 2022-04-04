@@ -26,31 +26,39 @@
               },
               {
                 "type": "category",
-                "label": "Tutorial - Basics",
+                "label": "筆記軟體",
                 "items": [
                   {
-                    "type": "doc",
-                    "id": "tutorial-basics/create-a-page"
-                  },
-                  {
-                    "type": "doc",
-                    "id": "tutorial-basics/create-a-document"
-                  },
-                  {
-                    "type": "doc",
-                    "id": "tutorial-basics/create-a-blog-post"
-                  },
-                  {
-                    "type": "doc",
-                    "id": "tutorial-basics/markdown-features"
-                  },
-                  {
-                    "type": "doc",
-                    "id": "tutorial-basics/deploy-your-site"
-                  },
-                  {
-                    "type": "doc",
-                    "id": "tutorial-basics/congratulations"
+                    "type": "category",
+                    "label": "Docusaurus",
+                    "items": [
+                      {
+                        "type": "doc",
+                        "id": "Record/docusaurus/create-a-page"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "Record/docusaurus/create-a-document"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "Record/docusaurus/create-a-blog-post"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "Record/docusaurus/markdown-features"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "Record/docusaurus/deploy-your-site"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "Record/docusaurus/congratulations"
+                      }
+                    ],
+                    "collapsed": true,
+                    "collapsible": true
                   }
                 ],
                 "collapsed": true,
@@ -95,20 +103,20 @@
               "sidebar": "tutorialSidebar",
               "next": {
                 "title": "Create a Page",
-                "permalink": "/docs/tutorial-basics/create-a-page"
+                "permalink": "/docs/Record/docusaurus/create-a-page"
               }
             },
             {
-              "unversionedId": "tutorial-basics/congratulations",
-              "id": "tutorial-basics/congratulations",
+              "unversionedId": "Record/docusaurus/congratulations",
+              "id": "Record/docusaurus/congratulations",
               "isDocsHomePage": false,
               "title": "Congratulations!",
               "description": "You have just learned the basics of Docusaurus and made some changes to the initial template.",
-              "source": "@site/docs/tutorial-basics/congratulations.md",
-              "sourceDirName": "tutorial-basics",
-              "slug": "/tutorial-basics/congratulations",
-              "permalink": "/docs/tutorial-basics/congratulations",
-              "editUrl": "https://github.com/facebook/docusaurus/edit/main/website/docs/tutorial-basics/congratulations.md",
+              "source": "@site/docs/Record/docusaurus/congratulations.md",
+              "sourceDirName": "Record/docusaurus",
+              "slug": "/Record/docusaurus/congratulations",
+              "permalink": "/docs/Record/docusaurus/congratulations",
+              "editUrl": "https://github.com/facebook/docusaurus/edit/main/website/docs/Record/docusaurus/congratulations.md",
               "tags": [],
               "version": "current",
               "sidebarPosition": 6,
@@ -118,7 +126,7 @@
               "sidebar": "tutorialSidebar",
               "previous": {
                 "title": "Deploy your site",
-                "permalink": "/docs/tutorial-basics/deploy-your-site"
+                "permalink": "/docs/Record/docusaurus/deploy-your-site"
               },
               "next": {
                 "title": "Manage Docs Versions",
@@ -126,16 +134,16 @@
               }
             },
             {
-              "unversionedId": "tutorial-basics/create-a-blog-post",
-              "id": "tutorial-basics/create-a-blog-post",
+              "unversionedId": "Record/docusaurus/create-a-blog-post",
+              "id": "Record/docusaurus/create-a-blog-post",
               "isDocsHomePage": false,
               "title": "Create a Blog Post",
               "description": "Docusaurus creates a page for each blog post, but also a blog index page, a tag system, an RSS feed...",
-              "source": "@site/docs/tutorial-basics/create-a-blog-post.md",
-              "sourceDirName": "tutorial-basics",
-              "slug": "/tutorial-basics/create-a-blog-post",
-              "permalink": "/docs/tutorial-basics/create-a-blog-post",
-              "editUrl": "https://github.com/facebook/docusaurus/edit/main/website/docs/tutorial-basics/create-a-blog-post.md",
+              "source": "@site/docs/Record/docusaurus/create-a-blog-post.md",
+              "sourceDirName": "Record/docusaurus",
+              "slug": "/Record/docusaurus/create-a-blog-post",
+              "permalink": "/docs/Record/docusaurus/create-a-blog-post",
+              "editUrl": "https://github.com/facebook/docusaurus/edit/main/website/docs/Record/docusaurus/create-a-blog-post.md",
               "tags": [],
               "version": "current",
               "sidebarPosition": 3,
@@ -145,24 +153,24 @@
               "sidebar": "tutorialSidebar",
               "previous": {
                 "title": "Create a Document",
-                "permalink": "/docs/tutorial-basics/create-a-document"
+                "permalink": "/docs/Record/docusaurus/create-a-document"
               },
               "next": {
                 "title": "Markdown Features",
-                "permalink": "/docs/tutorial-basics/markdown-features"
+                "permalink": "/docs/Record/docusaurus/markdown-features"
               }
             },
             {
-              "unversionedId": "tutorial-basics/create-a-document",
-              "id": "tutorial-basics/create-a-document",
+              "unversionedId": "Record/docusaurus/create-a-document",
+              "id": "Record/docusaurus/create-a-document",
               "isDocsHomePage": false,
               "title": "Create a Document",
               "description": "Documents are groups of pages connected through:",
-              "source": "@site/docs/tutorial-basics/create-a-document.md",
-              "sourceDirName": "tutorial-basics",
-              "slug": "/tutorial-basics/create-a-document",
-              "permalink": "/docs/tutorial-basics/create-a-document",
-              "editUrl": "https://github.com/facebook/docusaurus/edit/main/website/docs/tutorial-basics/create-a-document.md",
+              "source": "@site/docs/Record/docusaurus/create-a-document.md",
+              "sourceDirName": "Record/docusaurus",
+              "slug": "/Record/docusaurus/create-a-document",
+              "permalink": "/docs/Record/docusaurus/create-a-document",
+              "editUrl": "https://github.com/facebook/docusaurus/edit/main/website/docs/Record/docusaurus/create-a-document.md",
               "tags": [],
               "version": "current",
               "sidebarPosition": 2,
@@ -172,24 +180,24 @@
               "sidebar": "tutorialSidebar",
               "previous": {
                 "title": "Create a Page",
-                "permalink": "/docs/tutorial-basics/create-a-page"
+                "permalink": "/docs/Record/docusaurus/create-a-page"
               },
               "next": {
                 "title": "Create a Blog Post",
-                "permalink": "/docs/tutorial-basics/create-a-blog-post"
+                "permalink": "/docs/Record/docusaurus/create-a-blog-post"
               }
             },
             {
-              "unversionedId": "tutorial-basics/create-a-page",
-              "id": "tutorial-basics/create-a-page",
+              "unversionedId": "Record/docusaurus/create-a-page",
+              "id": "Record/docusaurus/create-a-page",
               "isDocsHomePage": false,
               "title": "Create a Page",
               "description": "Add Markdown or React files to src/pages to create a standalone page:",
-              "source": "@site/docs/tutorial-basics/create-a-page.md",
-              "sourceDirName": "tutorial-basics",
-              "slug": "/tutorial-basics/create-a-page",
-              "permalink": "/docs/tutorial-basics/create-a-page",
-              "editUrl": "https://github.com/facebook/docusaurus/edit/main/website/docs/tutorial-basics/create-a-page.md",
+              "source": "@site/docs/Record/docusaurus/create-a-page.md",
+              "sourceDirName": "Record/docusaurus",
+              "slug": "/Record/docusaurus/create-a-page",
+              "permalink": "/docs/Record/docusaurus/create-a-page",
+              "editUrl": "https://github.com/facebook/docusaurus/edit/main/website/docs/Record/docusaurus/create-a-page.md",
               "tags": [],
               "version": "current",
               "sidebarPosition": 1,
@@ -203,20 +211,20 @@
               },
               "next": {
                 "title": "Create a Document",
-                "permalink": "/docs/tutorial-basics/create-a-document"
+                "permalink": "/docs/Record/docusaurus/create-a-document"
               }
             },
             {
-              "unversionedId": "tutorial-basics/deploy-your-site",
-              "id": "tutorial-basics/deploy-your-site",
+              "unversionedId": "Record/docusaurus/deploy-your-site",
+              "id": "Record/docusaurus/deploy-your-site",
               "isDocsHomePage": false,
               "title": "Deploy your site",
               "description": "Docusaurus is a static-site-generator (also called Jamstack).",
-              "source": "@site/docs/tutorial-basics/deploy-your-site.md",
-              "sourceDirName": "tutorial-basics",
-              "slug": "/tutorial-basics/deploy-your-site",
-              "permalink": "/docs/tutorial-basics/deploy-your-site",
-              "editUrl": "https://github.com/facebook/docusaurus/edit/main/website/docs/tutorial-basics/deploy-your-site.md",
+              "source": "@site/docs/Record/docusaurus/deploy-your-site.md",
+              "sourceDirName": "Record/docusaurus",
+              "slug": "/Record/docusaurus/deploy-your-site",
+              "permalink": "/docs/Record/docusaurus/deploy-your-site",
+              "editUrl": "https://github.com/facebook/docusaurus/edit/main/website/docs/Record/docusaurus/deploy-your-site.md",
               "tags": [],
               "version": "current",
               "sidebarPosition": 5,
@@ -226,24 +234,24 @@
               "sidebar": "tutorialSidebar",
               "previous": {
                 "title": "Markdown Features",
-                "permalink": "/docs/tutorial-basics/markdown-features"
+                "permalink": "/docs/Record/docusaurus/markdown-features"
               },
               "next": {
                 "title": "Congratulations!",
-                "permalink": "/docs/tutorial-basics/congratulations"
+                "permalink": "/docs/Record/docusaurus/congratulations"
               }
             },
             {
-              "unversionedId": "tutorial-basics/markdown-features",
-              "id": "tutorial-basics/markdown-features",
+              "unversionedId": "Record/docusaurus/markdown-features",
+              "id": "Record/docusaurus/markdown-features",
               "isDocsHomePage": false,
               "title": "Markdown Features",
               "description": "Docusaurus supports Markdown and a few additional features.",
-              "source": "@site/docs/tutorial-basics/markdown-features.mdx",
-              "sourceDirName": "tutorial-basics",
-              "slug": "/tutorial-basics/markdown-features",
-              "permalink": "/docs/tutorial-basics/markdown-features",
-              "editUrl": "https://github.com/facebook/docusaurus/edit/main/website/docs/tutorial-basics/markdown-features.mdx",
+              "source": "@site/docs/Record/docusaurus/markdown-features.mdx",
+              "sourceDirName": "Record/docusaurus",
+              "slug": "/Record/docusaurus/markdown-features",
+              "permalink": "/docs/Record/docusaurus/markdown-features",
+              "editUrl": "https://github.com/facebook/docusaurus/edit/main/website/docs/Record/docusaurus/markdown-features.mdx",
               "tags": [],
               "version": "current",
               "sidebarPosition": 4,
@@ -253,11 +261,11 @@
               "sidebar": "tutorialSidebar",
               "previous": {
                 "title": "Create a Blog Post",
-                "permalink": "/docs/tutorial-basics/create-a-blog-post"
+                "permalink": "/docs/Record/docusaurus/create-a-blog-post"
               },
               "next": {
                 "title": "Deploy your site",
-                "permalink": "/docs/tutorial-basics/deploy-your-site"
+                "permalink": "/docs/Record/docusaurus/deploy-your-site"
               }
             },
             {
@@ -280,7 +288,7 @@
               "sidebar": "tutorialSidebar",
               "previous": {
                 "title": "Congratulations!",
-                "permalink": "/docs/tutorial-basics/congratulations"
+                "permalink": "/docs/Record/docusaurus/congratulations"
               },
               "next": {
                 "title": "Translate your site",
@@ -319,6 +327,39 @@
     "default": {
       "blogSidebarTitle": "Recent posts",
       "blogPosts": [
+        {
+          "id": "First Commit",
+          "metadata": {
+            "permalink": "/blog/First Commit",
+            "editUrl": "https://github.com/facebook/docusaurus/edit/main/website/blog/blog/2022-04-04-First Commit/index.md",
+            "source": "@site/blog/2022-04-04-First Commit/index.md",
+            "title": "First Commit",
+            "description": "程式語言中, 通常第一個commit都會來打 \"first commit\", 此篇為我的部落格的第一個 first commit",
+            "date": "2022-04-04T00:00:00.000Z",
+            "formattedDate": "April 4, 2022",
+            "tags": [
+              {
+                "label": "first",
+                "permalink": "/blog/tags/first"
+              }
+            ],
+            "readingTime": 0.255,
+            "truncated": false,
+            "authors": [
+              {
+                "name": "kiwee",
+                "title": "Backend Developer",
+                "url": "https://github.com/nick0916",
+                "imageURL": "https://github.com/nick0916.png",
+                "key": "kiwee"
+              }
+            ],
+            "nextItem": {
+              "title": "Welcome",
+              "permalink": "/blog/welcome"
+            }
+          }
+        },
         {
           "id": "welcome",
           "metadata": {
@@ -361,6 +402,10 @@
                 "key": "yangshun"
               }
             ],
+            "prevItem": {
+              "title": "First Commit",
+              "permalink": "/blog/First Commit"
+            },
             "nextItem": {
               "title": "MDX Blog Post",
               "permalink": "/blog/mdx-blog-post"
@@ -490,13 +535,14 @@
             "page": 1,
             "postsPerPage": 10,
             "totalPages": 1,
-            "totalCount": 4,
+            "totalCount": 5,
             "previousPage": null,
             "nextPage": null,
             "blogDescription": "Blog",
             "blogTitle": "Blog"
           },
           "items": [
+            "First Commit",
             "welcome",
             "mdx-blog-post",
             "long-blog-post",
@@ -505,6 +551,13 @@
         }
       ],
       "blogTags": {
+        "/blog/tags/first": {
+          "name": "first",
+          "items": [
+            "First Commit"
+          ],
+          "permalink": "/blog/tags/first"
+        },
         "/blog/tags/facebook": {
           "name": "facebook",
           "items": [

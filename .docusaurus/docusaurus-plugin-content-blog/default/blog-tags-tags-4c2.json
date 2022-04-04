@@ -1,4 +1,11 @@
 {
+  "/blog/tags/first": {
+    "allTagsPath": "/blog/tags",
+    "slug": "/blog/tags/first",
+    "name": "first",
+    "count": 1,
+    "permalink": "/blog/tags/first"
+  },
   "/blog/tags/facebook": {
     "allTagsPath": "/blog/tags",
     "slug": "/blog/tags/facebook",

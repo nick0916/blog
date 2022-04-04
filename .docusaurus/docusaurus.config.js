@@ -28,7 +28,7 @@ export default {
   ],
   "themeConfig": {
     "navbar": {
-      "title": "My Site",
+      "title": "Kiwee Blog",
       "logo": {
         "alt": "My Site Logo",
         "src": "img/logo.svg"

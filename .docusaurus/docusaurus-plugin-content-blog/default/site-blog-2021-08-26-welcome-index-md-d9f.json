@@ -38,6 +38,10 @@
       "key": "yangshun"
     }
   ],
+  "prevItem": {
+    "title": "First Commit",
+    "permalink": "/blog/First Commit"
+  },
   "nextItem": {
     "title": "MDX Blog Post",
     "permalink": "/blog/mdx-blog-post"

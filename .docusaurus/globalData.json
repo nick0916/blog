@@ -16,33 +16,33 @@
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "tutorial-basics/congratulations",
-              "path": "/docs/tutorial-basics/congratulations",
+              "id": "Record/docusaurus/congratulations",
+              "path": "/docs/Record/docusaurus/congratulations",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "tutorial-basics/create-a-blog-post",
-              "path": "/docs/tutorial-basics/create-a-blog-post",
+              "id": "Record/docusaurus/create-a-blog-post",
+              "path": "/docs/Record/docusaurus/create-a-blog-post",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "tutorial-basics/create-a-document",
-              "path": "/docs/tutorial-basics/create-a-document",
+              "id": "Record/docusaurus/create-a-document",
+              "path": "/docs/Record/docusaurus/create-a-document",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "tutorial-basics/create-a-page",
-              "path": "/docs/tutorial-basics/create-a-page",
+              "id": "Record/docusaurus/create-a-page",
+              "path": "/docs/Record/docusaurus/create-a-page",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "tutorial-basics/deploy-your-site",
-              "path": "/docs/tutorial-basics/deploy-your-site",
+              "id": "Record/docusaurus/deploy-your-site",
+              "path": "/docs/Record/docusaurus/deploy-your-site",
               "sidebar": "tutorialSidebar"
             },
             {
-              "id": "tutorial-basics/markdown-features",
-              "path": "/docs/tutorial-basics/markdown-features",
+              "id": "Record/docusaurus/markdown-features",
+              "path": "/docs/Record/docusaurus/markdown-features",
               "sidebar": "tutorialSidebar"
             },
             {

@@ -1,6 +1,39 @@
 {
   "blogPosts": [
     {
+      "id": "First Commit",
+      "metadata": {
+        "permalink": "/blog/First Commit",
+        "editUrl": "https://github.com/facebook/docusaurus/edit/main/website/blog/blog/2022-04-04-First Commit/index.md",
+        "source": "@site/blog/2022-04-04-First Commit/index.md",
+        "title": "First Commit",
+        "description": "程式語言中, 通常第一個commit都會來打 \"first commit\", 此篇為我的部落格的第一個 first commit",
+        "date": "2022-04-04T00:00:00.000Z",
+        "formattedDate": "April 4, 2022",
+        "tags": [
+          {
+            "label": "first",
+            "permalink": "/blog/tags/first"
+          }
+        ],
+        "readingTime": 0.255,
+        "truncated": false,
+        "authors": [
+          {
+            "name": "kiwee",
+            "title": "Backend Developer",
+            "url": "https://github.com/nick0916",
+            "imageURL": "https://github.com/nick0916.png",
+            "key": "kiwee"
+          }
+        ],
+        "nextItem": {
+          "title": "Welcome",
+          "permalink": "/blog/welcome"
+        }
+      }
+    },
+    {
       "id": "welcome",
       "metadata": {
         "permalink": "/blog/welcome",
@@ -42,6 +75,10 @@
             "key": "yangshun"
           }
         ],
+        "prevItem": {
+          "title": "First Commit",
+          "permalink": "/blog/First Commit"
+        },
         "nextItem": {
           "title": "MDX Blog Post",
           "permalink": "/blog/mdx-blog-post"
