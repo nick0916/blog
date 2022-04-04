@@ -4,9 +4,15 @@
         <title>Kiwee Blog Blog</title>
         <link>https://hey-kiwee.dev/blog</link>
         <description>Kiwee Blog Blog</description>
-        <lastBuildDate>Thu, 26 Aug 2021 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 04 Apr 2022 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
+        <item>
+            <title><![CDATA[First COmmit]]></title>
+            <link>https://hey-kiwee.dev/blog/First Commit</link>
+            <guid>First Commit</guid>
+            <pubDate>Mon, 04 Apr 2022 00:00:00 GMT</pubDate>
+        </item>
         <item>
             <title><![CDATA[Welcome]]></title>
             <link>https://hey-kiwee.dev/blog/welcome</link>
