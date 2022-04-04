@@ -25,10 +25,16 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
           editUrl: 'https://github.com/facebook/docusaurus/edit/main/website/',
         },
         blog: {
+          path: "./blog",
+          routeBasePath: "/",
           showReadingTime: true,
           // Please change this to your repo.
           editUrl:
             'https://github.com/facebook/docusaurus/edit/main/website/blog/',
+        },
+        pages: {
+          path: "src/pages",
+          routeBasePath: "/pages"
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -51,9 +57,9 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             type: 'doc',
             docId: 'intro',
             position: 'left',
-            label: 'Tutorial',
+            label: 'Dev Docs',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+          {to: '/pages', label: 'About', position: 'left'},
           {
             href: 'https://github.com/facebook/docusaurus',
             label: 'GitHub',
