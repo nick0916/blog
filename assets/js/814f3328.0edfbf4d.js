@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunknick_blog=self.webpackChunknick_blog||[]).push([[535],{5641:function(t){t.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"First Commit","permalink":"/First Commit"}]}')}}]);

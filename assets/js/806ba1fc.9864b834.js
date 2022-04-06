@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunknick_blog=self.webpackChunknick_blog||[]).push([[4050],{3826:function(a){a.exports=JSON.parse('{"allTagsPath":"/tags","name":"facebook","count":1,"permalink":"/tags/facebook"}')}}]);
