@@ -6,7 +6,7 @@
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://hey-kiwee.dev/"/>
     <subtitle>Kiwee Blog Blog</subtitle>
-    <icon>https://hey-kiwee.dev/img/favicon.ico</icon>
+    <icon>https://hey-kiwee.dev/img/kiwi.png</icon>
     <entry>
         <title type="html"><![CDATA[First Commit]]></title>
         <id>First Commit</id>
