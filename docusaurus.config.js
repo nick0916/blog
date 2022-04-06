@@ -10,7 +10,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/kiwi.png',
   organizationName: 'nick0916', // Usually your GitHub org/user name.
   projectName: 'blog', // Usually your repo name.
 
@@ -50,7 +50,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         title: 'Kiwee Blog',
         logo: {
           alt: 'My Site Logo',
-          src: 'img/logo.svg',
+          src: 'img/kiwi.png',
         },
         items: [
           {
