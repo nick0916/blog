@@ -1,139 +1,44 @@
 ---
-sidebar_position: 1
-title: 基本技巧
+sidebar_position: 2
+title: 測試 - pytest
 ---
-## 定義Type
 
-- 定義回傳是Vector
+# 指令
 
-```python
-Vector = list[float]
-
-def scale(scalar: float, vector: Vector) -> Vector:
-    return [scalar * num for num in vector]
-
-# typechecks; a list of floats qualifies as a Vector.
-new_vector = scale(2.0, [1.0, -4.2, 5.4])
-```
-
-- 定義回傳是 `none`,  傳入值是composite的格式
+- 執行單一檔案
+    - -v 秀出pass 字樣
+    - asyncio-mode=auto : 非同步設定
 
 ```python
-# Type aliases are useful for simplifying complex type signatures. For example:
-
-from collections.abc import Sequence
-
-ConnectionOptions = dict[str, str]
-Address = tuple[str, int]
-Server = tuple[Address, ConnectionOptions]
-
-def broadcast_message(message: str, servers: Sequence[Server]) -> None:
-    ...
-
-# The static type checker will treat the previous type signature as
-# being exactly equivalent to this one.
-def broadcast_message(
-        message: str,
-        servers: Sequence[tuple[tuple[str, int], dict[str, str]]]) -> None:
+pytest tests/test_self_trade.py --asyncio-mode=auto -v
 ```
 
-- 定義 new type
+# 概念
+
+### 測試參數替換
+
+- 底下的pair是一個需要被替換的參數, 可以用 `pytest.mark.parameterize` 這個去指定 `fixture` function裡的參數, 要塞入其他值
 
 ```python
-from typing import NewType
+exchange_pair_list = ["btc_busd"]
 
-UserId = NewType('UserId', int)
-some_id = UserId(524313)
+@pytest.fixture
+def init_binance_future_symbol(MockApp, pair):
+    symbol = str(pair)
+
+    config = Sysconfig(MockApp)
+
+    future_symbol = binance_future.Binance_Future_Symbol(symbol)
+    future_symbol.set_basic_info(config)
+    return future_symbol
+
+@pytest.mark.parametrize('pair', exchange_pair_list)
+def test_get_position(init_binance_future_symbol):
+    position = init_binance_future_symbol.get_position()
+
+    assert type(position) is float
 ```
 
-## Poetry 版本控制軟體
+### 另一種參數使用 `indirect`
 
-> 可以看出主要main package有哪些, 更好做版本控制
->
-
-- export requirements.txt
-
-```bash
-poetry export -f requirements.txt --output requirements.txt --without-hashes
-```
-
-- 看出package 依賴
-
-```bash
-poetry show -t
-```
-
-- activate venv
-
-```bash
-source "$( poetry env list --full-path | grep Activated | cut -d' ' -f1 )/bin/activate"
-```
-
-## Python `is` and `==` difference
-
-- `is` 比較位置
-- `==` 比較值
-
-```python
-# python3 code to
-# illustrate the
-# difference between
-# == and is operator
-# [] is an empty list
-list1 = []
-list2 = []
-list3=list1
- 
-if (list1 == list2):
-    print("True")
-else:
-    print("False")
- 
-if (list1 is list2):
-    print("True")
-else:
-    print("False")
- 
-if (list1 is list3):
-    print("True")
-else:   
-    print("False")
- 
-list3 = list3 + list2
- 
-if (list1 is list3):
-    print("True")
-else:   
-    print("False")
-
-# Output:
-
-# True
-# False
-# True
-# False
-```
-
-## Python variable scope
-
-Variable set outside `__init__` belong to the class. They're shared by all instances.
-
-Variables created inside `__init__` (and all other method functions) and prefaced with `self.` belong to the object instance.
-
-## Pydantic: 資料型態驗證工具
-
-- https://github.com/Kludex/awesome-pydantic
-- [Rise of the Pydantic Stack](https://python.plainenglish.io/an-introduction-to-the-pydantic-stack-9e490d606c8d)
-
-## PAMI
-
-- **[Hello! I am PAMI](https://towardsdatascience.com/hello-i-am-pami-937439c7984d)**
-- A new Pattern Mining Python library for Data Science
-
-## 基礎知識
-
-[https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzUyMjU5ODM1Mg==&action=getalbum&album_id=2176450482389434369&scene=173&from_msgid=2247492657&from_itemidx=1&count=3&nolastread=1#wechat_redirect](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzUyMjU5ODM1Mg==&action=getalbum&album_id=2176450482389434369&scene=173&from_msgid=2247492657&from_itemidx=1&count=3&nolastread=1#wechat_redirect)
-
-## 設計模式
-
-- [設計模式](https://blog.csdn.net/libing_thinking/category_5841427.html)
+****[pytest 参数化中的indirect的作用](https://blog.csdn.net/zhouxuan623/article/details/103772268)****

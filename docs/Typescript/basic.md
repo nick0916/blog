@@ -3,268 +3,97 @@ sidebar_position: 1
 title: 基本技巧
 ---
 
-#### - ==List用法==
 
-```java=
-List myList = new ArrayList();
-```
+### > 設定test environment技巧
+https://stackoverflow.com/questions/50174584/how-to-set-environment-via-ng-serve-in-angular-6
 
-#### - ==parseJosn用法==
-```java=
-JSONObject json = new JSONObject(result); // Convert text to object
-System.out.println(json); // Print it with specified indentation
-```
-> 顯示json用的
-
-#### - ==盡量用Stream()來操作變數==
-> 優點：易讀性、可維護性
-> 通常都有做null handle，所以盡量用它比較好
-* Stream 宣告(常用 to list)
-```java=
-List<String> testGroup = 
-Stream.of("test1", "test2", "test3", "test4", "test5")
-.collect(Collectors.toList())
-```
-* Stream Map 搭配
-```java=
-// 取得當天此Group請假的使用者
-final Set<String> dayoffUsers = this.cmnLeaveDao.findLeaveDelegate(groupName)
-.stream()
-.map(CmnLeavePo::getLeaveUser)
-.collect(Collectors.toSet())
-    
-```
-> 在map使用getter去找出想要的屬性
-
-* Map搭配Stream
-
-
-* Stream 搭配Filter(用contains)
-```java=
-// 排除當日請假者 & 當前使用者
-List<String> collect = candidates
-.stream()
-.filter(c -> !dayoffUsers.contains(c) && !StringUtils.equals(c,nowUserId))
-.collect(Collectors.toList());
-```
-* orElse (當get不到東西時的default)
-```java=
-HumanBo borrowerInfo = humanBoList.stream()
-                            .filter(item -> item.getCustKind().equals(CustKind.BORROWER.getCode()))
-                            .findAny()
-                            .orElse(new HumanBo());
-```
-
-* sorted
-```java=
-// 建立 比較基準: 先比較財報最大迄日 > 更新日期最大（最晚) (可能簽核清單上的財報有多筆）
-Comparator<CmnFinanceAnalReportModel> compareByRptDtToAndUpdateTimeDesc = Comparator
-        .comparing((CmnFinanceAnalReportModel reportSet) -> reportSet.getHd().getRptDtTo()).reversed()
-        .thenComparing((CmnFinanceAnalReportModel reportSet) -> reportSet.getHd().getUpdateTimestamp()).reversed();
-
-// 取得 簽核清單目前匯入的財務資料
-Optional<CmnFinanceAnalReportModel> newestAnalReport = cmnEndorsementService.queryEndorsementList(caseSn, listType).stream()
-        .map(endorsement -> endorsement.getTypeNo())
-        .map(listId -> queryAnalReportByListId(Long.getLong(listId)))
-        .filter(reportSet -> Objects.nonNull(reportSet.getAnal().getListId()))
-        .sorted(compareByRptDtToAndUpdateTimeDesc)
-        .findFirst();
-
-```
-
-#### - ==Collector==
-* toList()
-
-
-* toMap()
-
-
-* toSet()
-
-* summingLong()
-```java=
-map.put("totalAprvAmt", projectAprvList.stream()
-                            .map(item -> item.getProject().getAprvAmt())
-                            .collect(Collectors.summingLong(Long::longValue)));
-                            
-```
-> sum金額(long)
-* Collectors.reducing()
-```java=
-resultModel.setTotalExposeAmount(conditionList.stream()
-        .filter(condition -> LimitApplyType.NEW.value().equals(condition.getApplyType()))
-        .map(condition -> condition.getCreditAmount())
-        .collect(Collectors.reducing(BigDecimal.ZERO, BigDecimal::add))
-    );
-```
-> sum金額(Bigdecimal)
-
-* joining()
-```java=
-String gurantorNameList = humanBoList.stream()
-                                .filter(item -> item.getCustKind().equals(CustKind.PERSON_1.getCode()) || item.getCustKind().equals(CustKind.PERSON_2.getCode()))
-                                .map(item -> item.getCustCname1() + item.getCustCname2())
-                                .collect(Collectors.joining(", "));
-```
-> 使用join去把string 合起來(中間用", "做分隔)
-#### - ==reduce用法==
-* 情境一:
-```java=
-BigDecimal totalBalanceTwAmount = collateralConditionList.stream()
-    .map(collateralCondition -> collateralCondition.getBalanceTwAmount())
-    .reduce(BigDecimal.ZERO, (totalAmount, balanceTwAmount) -> totalAmount.add(balanceTwAmount));
-```
-* 情境二:
-```java＝
-BigDecimal sum = filteredAC1.stream()
-    .map(m ->  FactorUtils.sum(Function.identity(), m.getLoanAmt(), m.getPassDueAmt()))
-    .reduce(BigDecimal.ZERO, BigDecimal::add);
-```
-
-#### - ==Optional使用技巧==
-> 取得值得時候，專門處理null用的
-
-1. 使用範例(一)：
-```java=
-Optional<String> notExistsInCacheCandidate = candidates.stream()
-.filter(nowCandidate -> !isUsedCandidate.get(categoryName).contains(nowCandidate))
-.findFirst();
-			
-if(notExistsInCacheCandidate.isPresent()) { 
-    String candidate = notExistsInCacheCandidate.get()
-    //do something... 
-}
-```
-> 通常Dao的findOneBy...都會搭配這個去接（畢竟不一定找得到）
-> .isPresent(): 判斷是否存在
-> .get(): 取值
-
-2. 使用範例(二):
-```java=
-plnProjectList.stream()
-    .map(project -> plnJcicB204Dao.findOneByCaseNoAndProjectCodeAndReversalFlag(project.getCaseNo(),
-            project.getProjectCode(), BooleanUtils.N))
-    .filter(Optional::isPresent)
-    .get(Optional::get)
-    .forEach(....);
-```
-> Dao撈出來的為Optional<..>，在用Optional::isPresent過濾有存在的
-> 用Optional::get取出值，在用forEach繼續做事
-
-3. 宣告Optional (可用在Junit, null handle)
-```java=
-Optional<class> variable = Optional.of(new Class()) 
-```    
-
-```java=
-Optional.ofNullable(quotnNo)
-    .filter(StringUtils::isNotEmpty)
-    .flatMap(no -> {
-        // plnquotn project dao find by quotnNo , project code, type 03
-        return Optional.of(plnQuotnProjectDao.findAllByQuotnNoAndProjectCodeAndDataType(no, projectCode, PlnQuotnProjectDataType.TYPE_03.getCode())
-                .stream().findFirst().orElse(null));
-    })
-    .ifPresent(plnQuotnProject -> {
-        result.setApplAmt(plnQuotnProject.getApplAmt());
-        result.setCrrwApplAmt(plnQuotnProject.getApplAmt());
-        result.setApplTenure(plnQuotnProject.getApplTenure());
-        result.setMoneyUseCode(plnQuotnProject.getMoneyUseCode());
-    });
-```
-
-4. Optional.ofNullable(), Optional.of()
-* 用ofNullable 來null handle，如果確定不會丟null，則用of()
-
-
-5. 後面接map，map也可以有null handle
-```java=
-public Boolean isHoliday(Date date) {
-    return odsUrHolidayDao.findOneByCalendarDate(DateUtils.nullableFormat(date, DateUtils.DEFAUT_QUOTN_DATE_FORMAT))
-        .map(OdsUrHolidayPo::getIsHoliday)
-        .filter(c -> OdsUrHolidayPo.HolidayCode.IS_HOLIDAY.getCode().equals(c))
-        .isPresent();
-}
-> 一方面用map去用getter取得特定的值來做判斷，另一方面也可以有null handle
-
-```
-
-
-
-#### - 泛型`<T>`的使用
-* 可以用來找不同類型的Dao
-* 
-```java=
-private <T, ID> JpaRepository<T, ID> getDaoByEntity(String entity) {
-    return applicationContext.getBean(entity + DAO_POSTFIX, JpaRepository.class);
-}
-
-private Class<?> getEntityClassbyEntity(String entity) throws ClassNotFoundException {
-    Class<?> entityClass = Class.forName(ENTITY_PACKAGE + StringUtils.capitalize(entity) + PO_POSTFIX);
-    return entityClass;
-}
-
-
-@PostMapping("/{entity}/save")
-public <T> ServiceResponse<T> save(@RequestBody ServiceRequest<MapVo> serviceRequest, 
-        @PathVariable("entity") String entityName) throws Exception {
-
-    Class<T> entityClass = (Class<T>) getEntityClassbyEntity(entityName);
-
-    JpaRepository<T, Long> entityDao = getDaoByEntity(entityName);
-
-    T model = serviceRequest.getModel().toObject(entityClass);
-
-    T result = entityDao.save(model);
-
-    return ServiceResponseBuilder.build(result);
+### > map 使用技巧
+1. keys() + Array.from()來取得keys並且用array的方式迭代
+```javascript
+allAtomList = new Map<String, String>();
+Array.from(allAtomList.keys()).forEach(atomName => {
+    ....
 }
 ```
 
-#### - ==Enum使用==
-* .value可以丟出所有？
+### > `Rxjs` 開發技巧
+1. 監聽變動
+- A ts component
+```javascript
+allAtomList$: Subject<any> = new Subject;
+allAtomList$.next(this.allAtomList);
+```
+- B ts component
+```javascript
+allAtomList$.subscribe(allAtomList => {
+    // 更新local allAtomList
+    // preprocessing in allAtomList data
+}
+```
+> - A, B component 用@input的方式再傳值
+> - 用這種方式，當A 的資料變動時，可以有事件trigger (有時候為了要preprocessing)
+
+### > appendTo='body'
+> 如果發現有pop up的視窗在inner div，因次被擋住，可以加上appendTo='body'去改善 （如果在dialog使用要小心，有可能滑動時因為appendTo 底下的body而固定住不動)
+
+### > 生命週期
+> ngoninit, onchange.....
+>
+
+### > false的判斷
+> 可以用!加變數來判斷空字串或是null的值
+```javascript
+var test = '';
+console.log(!test) // true
+
+test = null;
+console.log(!test) // true
+
+```
+### > opt
+> 一種null handle
+
+### > 處理非同步方法
+> Forkjoin (RxJS)
+
+### > cache的使用？
 
 
-#### - ==好用函數介面==
+### > subscribe的使用
+    方便之後的destory
 
-#### - ==flatMap用法==
+### > 日期處理
+    * Momentjs
+    * isBetween
 
-```java=
-Optional.ofNullable(quotnNo)
-    .filter(StringUtils::isNotEmpty)
-    .flatMap(no -> {
-        // plnquotn project dao find by quotnNo , project code, type 03
-        return Optional.of(plnQuotnProjectDao.findAllByQuotnNoAndProjectCodeAndDataType(no, projectCode, PlnQuotnProjectDataType.TYPE_03.getCode())
-                .stream().findFirst().orElse(null));
-    })
-    .ifPresent(plnQuotnProject -> {
-        result.setApplAmt(plnQuotnProject.getApplAmt());
-        result.setCrrwApplAmt(plnQuotnProject.getApplAmt());
-        result.setApplTenure(plnQuotnProject.getApplTenure());
-        result.setMoneyUseCode(plnQuotnProject.getMoneyUseCode());
-    });
+```javascript
+return {label:moment(new Date(data.createdTime)).format("YYYY/MM/DD HH:mm:ss"), value:data.qryRefNo};
 ```
 
-[參考資料](https://openhome.cc/Gossip/Java/ConsumerFunctionPredicateSupplier.html)
+    Note:  HH 大寫是24小時制，hh是小寫制
 
-#### - ==sorted用法==
+[moment官網](https://momentjs.com/docs/#/displaying/calendar-time/)
 
-```java=
-result = payListSet.stream()
-        .sorted(Comparator.comparing(PlnPaylistPo::getRestartSeq).reversed())
-        .findFirst().get()
-        .getPaylistJson();
+### > Angular: render時字串轉乘int方法
+
+```html
+ <td>{{ +bamItem.dataYyyM + 1911 }}</td>
 ```
-> 降冪排序
+> 前面用+可以把變數從string轉乘int
+> [參考網站](https://www.angularjswiki.com/angular/how-to-convert-a-string-to-number-in-angular-or-typescript/)
 
-[參考資料](https://matthung0807.blogspot.com/2019/07/java-8-steamsortedlist.html)
+### > Angular: Reative Form使用技巧
+    * 快速宣告：formBuilder
+    * FormArray的使用
 
-#### - ==BigDecimal用法==
+* value change 技巧
+> 用Rxjs的方式去監聽valueChang這個事件，來改變數值
+```javascript
+subs: Array<Subscription> = new Array<Subscription>();
 
-```java=
-BigDecimal HUBDRED_PERCENT = new BigDecimal(100);
-new BigDecimal(0.010500).multiply(HUNDRED_PERCENT).setScale(3).stripTrailingZeros())
+this.subs.push(this.jcicForm.get("dataFromCode").valueChanges.subscribe(v => {
+    this.jcicForm.get("qryRefNo").setValue(null);
+    this.jcicForm.get('qryItem').setValue(null);
+})
 ```
-> 轉換 * 100 %之後把後面的0去掉
-> 如果要轉成字串，用toPlainString不會有科學符號
-> 也可以用移動小數點的方式去相乘100
-> setScale(): 小數點後幾位（預設四捨五入）
+

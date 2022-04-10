@@ -6,7 +6,7 @@ sidebar_position: 1
 
 在這邊, 我會放置各式各樣的 Developer 技術相關筆記
 
-分類大綱如下:
+隨手列出列別如下:
 - pytest
 - Python
 - SQL 知識
@@ -16,7 +16,6 @@ sidebar_position: 1
 - Vue
 - Java
 - 框架技術趨勢
-- 架站知識 - Gatsby.js
 - 待消化
 - Node.js 筆記
 - Angular 筆記
